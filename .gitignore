@@ -1,0 +1,7 @@
+# Ignore everything by default
+*
+
+# Explicitly allow the files you want to track
+!readme.md
+!osmium.iso
+!.gitignore
