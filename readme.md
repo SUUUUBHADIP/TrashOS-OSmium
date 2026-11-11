@@ -57,6 +57,7 @@ The files in `cpu/drivers/` allow the kernel to interact with peripheral hardwar
 * **`ata_pio.c`**: Hard disk controller driver using ATA Programmed Input/Output (PIO) mode. Reads and writes 512-byte sectors from IDE/ATA drives via standard I/O ports (`0x1F0`-`0x1F7`).
 * **`osmium_fs.c`**: High-level driver for the custom Osmium File System. Provides APIs for mounting storage devices, creating, reading, writing, and deleting files on disk.
 * **`fs_layout.c`**: Manages on-disk structures and metadata formatting (superblocks, inode tables, directory entry parsing) required by the filesystem.
+* **'OSMFV2'**: The version 2 is being used instead of the previous OSMFV1 which supports only basic things, the V2 supports commands like directory and etc and elf foundation.
 
 ---
 
@@ -76,28 +77,31 @@ The files in `cpu/drivers/` allow the kernel to interact with peripheral hardwar
 
 
 ## Building and Running
+You can install the os using the iso provided that is v1 it supports up to 4 gigs of ram {tested upto 2gigs} 
 
-To build and run the kernel locally using QEMU:
+As for the storage, the initial storage was about 64kB but it can support other configuration {tested upto 2 gigs of storage} 
 
-```bash
-make
-qemu-system-i386 -drive format=raw,file=osmium-disk.img
-```
-or 
+*Note: above statements about tests were done in linux not inside a virtual box.
 
-```bash
-make run
-```
+* **I ran it in Oracle virtual box with the config of**
+- **Hypervisor:** Oracle VirtualBox
+- **RAM Allocation:** 512MB – 1024MB *(tested)*
+- **Storage Configuration:** 2GB *(tested)*
+- **CPU Cores:** 2
 
-
-
-
+### Next Plans
+1. Building an internet driver and a driver manager.
+2. Building a proper user shell in ring 3 and ELF executable support.
 
 ### ⏸️ Temporary Project Pause & Resume Plan
 I am currently putting active development on hold to focus fully on my studies. 
 
 * **Current Status:** Paused (Development Break)
-* **Planned Resume Date:** January 2027
+* **Planned Resume Date:** January 2027 or late December of 2026
+
+### A small notice I realized after making the iso
+* As you type the command help in the test category there is a command "test all", yeah that one doesnt work T_T
+* Use just "test" that test everything. XD
 
 ### 🤝 Open for Collaboration & Feedback
 Even though I am taking a hiatus, feedback and collaboration are very welcome! If you inspect the codebase, find any bugs/flaws, or want to contribute to its development, feel free to reach out.
